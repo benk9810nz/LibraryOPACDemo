@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+@{
+    ViewBag.Title = "All Roles";
+}
+
+<h1>All Roles</h1>
+
+@if (Model.Any())
+{
+
+    <a class="btn btn-primary" asp-action="CreateRole" asp-controller="Administration">Create Role</a>
+    <hr />
+    foreach (var role in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                Row ID: @role.Id
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@role.Name</h5>
+            </div>
+            <div class="card-footer">
+                <a asp-action="EditRole" class="btn btn-primary" asp-controller="Administration" asp-route-id="@role.Id">Edit</a>
+                @if (role.Name == "Admin" || role.Name == "Employee")
+                {
+                    <a href="#" class="btn btn-danger">Delete</a>
+                    <p class="text-danger" style="margin-top: 5px;">This Role is unable to be Deleted due to how this Role is Required in this Web Application</p>
+                }
+                else
+                {
+                    <a asp-action="DeleteRole" class="btn btn-danger">Delete</a>
+                }
+            </div>
+        </div>
+       <hr />
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No Roles Created Yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Use the Button below to create a Role
+            </h5>
+            <a class="btn btn-primary" asp-action="CreateRole" asp-controller="Administration">Create Role</a>
+        </div>
+    </div>
+}

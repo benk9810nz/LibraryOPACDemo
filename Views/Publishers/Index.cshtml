@@ -1,0 +1,89 @@
+﻿@model IEnumerable<LIbraryManagementSytem.Models.Publisher>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+@if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suburb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Postcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebsiteURL)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Suburb)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Postcode)
+                </td>
+                <td>
+                    @{
+                        string number = string.Format("{0:0.##}", item.PhoneNumber);
+                    }
+                    <a href="tel:+@number">@number</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WebsiteURL)
+                </td>
+                <td>
+                    @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.PublisherID">Edit</a>
+                    } |
+                    <a asp-action="Details" asp-route-id="@item.PublisherID">Details</a> |
+                    @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.PublisherID">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

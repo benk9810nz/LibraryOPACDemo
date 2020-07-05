@@ -1,0 +1,56 @@
+﻿@model IEnumerable<LIbraryManagementSytem.Models.Genre>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+@if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinimumAge)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinimumAge)
+                </td>
+                <td>
+                    @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.GenreID">Edit</a>
+                    }|
+                    <a asp-action="Details" asp-route-id="@item.GenreID">Details</a> |
+                    @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.GenreID">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+﻿@model LIbraryManagementSytem.Models.BookCopies
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BookCopies</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BookBarcode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookBarcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book)
+        </dt>
+        <dd>
+            <a asp-controller="Books" asp-action="Details" asp-route-id="@Model.Book.BookID">
+                @Html.DisplayFor(model => model.Book.Name)</a>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Retailer)
+        </dt>
+        <dd>
+            <a asp-controller="Retailers" asp-action="Details" asp-route-id="@Model.Retailer.RetailerID">
+                @Html.DisplayFor(model => model.Retailer.Name)</a>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchasePrice)
+        </dt>
+        <dd>
+            $@Html.DisplayFor(model => model.PurchasePrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RFID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RFID)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.BookCopiesID">Edit</a>
+    }
+    <a asp-action="Index">Back to List</a>
+</div>

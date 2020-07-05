@@ -1,0 +1,72 @@
+﻿@model LIbraryManagementSytem.Models.Publisher
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Publisher</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Suburb)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Suburb)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Postcode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Postcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd>
+            @{
+                string number = string.Format("{0:0.##}", @Model.PhoneNumber);
+            }
+            <a href="tel:+@number">@number</a>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WebsiteURL)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WebsiteURL)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.PublisherID">Edit</a>
+    } |
+<a asp-action="Index">Back to List</a>
+</div>

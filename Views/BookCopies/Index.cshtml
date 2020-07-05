@@ -1,0 +1,80 @@
+﻿@model IEnumerable<LIbraryManagementSytem.Models.BookCopies>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+@if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookBarcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Retailer)
+            </th>
+            @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.PurchasePrice)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RFID)
+            </th>
+            }
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookBarcode)
+            </td>
+            <td>
+                <a asp-controller="Books" asp-action="Details" asp-route-id="@item.Book.BookID">
+                    @Html.DisplayFor(modelItem => item.Book.Name)
+                </a>
+            </td>
+            <td>
+                <a asp-controller="Retailers" asp-action="Details" asp-route-id="@item.Retailer.RetailerID">
+                    @Html.DisplayFor(modelItem => item.Retailer.Name)
+                </a>
+            </td>
+            @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+            {
+                <td>
+                    $@Html.DisplayFor(modelItem => item.PurchasePrice)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RFID)
+            </td>
+            }
+
+            <td>
+                @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.BookCopiesID">Edit</a>
+                }
+                <a asp-action="Details" asp-route-id="@item.BookCopiesID">Details</a>
+                @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+                {
+                    <a asp-action="Delete" asp-route-id="@item.BookCopiesID">Delete</a>
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

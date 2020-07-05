@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+    <head>
+        <style>
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
+        </style>
+    </head>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Welcome to my Library Demo Website</h1>
+            <p>
+                This Web Application is a ASP.Net Core MVC Application demonstrating some of the knowledge I have gained through
+                my coursework and extra study outside of class (such as the Expanding Identity and Custom Roles)
+            </p>
+            <a href="github.com" class="btn btn-primary center">Github Source Code for this Web Application</a>
+            <br />
+            <a asp-action="References" class="btn btn-warning center">Sources/References used in the Development of this Web App</a>
+        </div>
+    </div>
+
+    <p>To access most of the features within this application you can either create an account, or use one of the following
+    built in accounts. Several Pages and Controllers within this Web Application are restricted to certian access levels (roles)
+    which a user must be within to access these features.</p>
+    <div class="table-responsive">
+        <table border="1" class="table table-striped">
+            <tr style="color: white; background-color: black; font-weight: bold; text-align: center;">
+                <td>Username</td>
+                <td>Password</td>
+                <td>Access Level</td>
+                <td>Details</td>
+            </tr>
+            <tr>
+                <td>guest@benking.co.nz</td>
+                <td>Password123#</td>
+                <td>Customer/Guest User (Can only View Information)</td>
+                <td>This User has no Roles assigned to them, therefore making them a Guest Login. They can only View Information, and can not modify anything.</td>
+            </tr>
+            <tr>
+                <td>ben@benking.co.nz</td>
+                <td>Password123#</td>
+                <td>Employee User (Can Add/Edit/Remove things)</td>
+                <td>This User has the Employee Role, allowing them to Create/Edit/Delete/View Information within this Application.</td>
+            </tr>
+            <tr>
+                <td>admin@benking.co.nz</td>
+                <td>Password123#</td>
+                <td>Admn User (Can do everything Employee does + Control User Access Levels)</td>
+                <td>This User has the same priviliges as the Employee Role, however can also add/modify/delete Roles that users can be assigned to. They can also assign/unassign roles to users</td>
+            </tr>
+        </table>
+    </div>

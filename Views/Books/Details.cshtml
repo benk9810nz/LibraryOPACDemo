@@ -1,0 +1,118 @@
+﻿@model LIbraryManagementSytem.Models.BookDetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+<head>
+    <style>
+        table {
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        td {
+            padding-right: 30px;
+        }
+        .table-body:nth-child(2n+2){
+            background-color: #CCC;
+        }
+        .table-body:nth-child(2n+1) {
+            background-color: #FFF;
+        }
+        th {
+            background-color: black;
+            color: white;
+            justify-content: center;
+            margin-left: 10px;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Books.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Books.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Books.AuthorName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Books.AuthorName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Books.PublicationDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Books.PublicationDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Books.Publisher)
+        </dt>
+        <dd>
+            <a asp-controller="Publishers" asp-action="Details" asp-route-id="@Model.Books.PublisherID">
+                @Html.DisplayFor(model => model.Books.Publisher.Name)</a>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Books.Genre)
+        </dt>
+        <dd>
+            <a asp-controller="Genres" asp-action="Details" asp-route-id="@Model.Books.GenreID">
+                @Html.DisplayFor(model => model.Books.Genre.Name)</a>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Books.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Books.Description)
+        </dd>
+    </dl>
+    @if (Model.BookCopies.Count() != 0)
+    {
+        <table border="1" style="border: 3px solid black;" class="table-bordered">
+            <tr>
+                <th>Book Barcode</th>
+                <th>RFID Tag</th>
+                <th>Retailer</th>
+                @if (User.IsInRole("Employee") || User.IsInRole("Admin")) {
+                <th>Purchase Price</th>
+                }
+                <th></th>
+            </tr>
+            @foreach (var bc in Model.BookCopies)
+            {
+        <tr class="table-body">
+            <td><a asp-controller="BookCopies" asp-action="Details" asp-route-id="@bc.BookCopiesID">@bc.BookBarcode</a></td>
+            <td>@bc.RFID</td>
+            <td><a asp-controller="Retailers" asp-action="Details" asp-route-id="@bc.Retailer.RetailerID">@bc.Retailer.Name</a></td>
+            @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+            {
+                <td>$@bc.PurchasePrice</td>
+                <td><a style="margin-left: auto; margin-right: auto;" class="btn btn-primary" asp-controller="BookCopies" asp-action="Details" asp-route-id="@bc.BookCopiesID">Details/Edit</a></td>
+            }
+            else
+            {
+                <td><a style="margin-left: auto; margin-right: auto;" class="btn btn-primary" asp-controller="BookCopies" asp-action="Details" asp-route-id="@bc.BookCopiesID">Details</a></td>
+            }
+        </tr>
+            }
+        </table>
+    }
+    @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+    {
+    <a class="btn btn-primary" style="margin-bottom: 10px;" asp-controller="BookCopies" asp-action="Create">Add New Book Copy</a>
+    }
+    </div>
+<div>
+    @if (User.IsInRole("Employee") || User.IsInRole("Admin")) { 
+        <a asp-action="Edit" asp-route-id="@Model.Books.BookID">Edit</a>
+        }
+    <a asp-action="Index">Back to List</a>
+</div>
