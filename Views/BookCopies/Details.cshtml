@@ -14,7 +14,10 @@
             @Html.DisplayNameFor(model => model.BookBarcode)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.BookBarcode)
+            @{
+                string number = string.Format("{0:0.##}", Model.BookBarcode);
+            }
+            @number
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Book)

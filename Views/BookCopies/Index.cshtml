@@ -41,7 +41,10 @@
         {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.BookBarcode)
+                @{
+                    string number = string.Format("{0:0.##}", item.BookBarcode);
+                }
+                @number
             </td>
             <td>
                 <a asp-controller="Books" asp-action="Details" asp-route-id="@item.Book.BookID">

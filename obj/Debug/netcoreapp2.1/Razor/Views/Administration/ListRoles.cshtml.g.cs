@@ -78,7 +78,7 @@ using LIbraryManagementSytem.Models;
             WriteLiteral("    ");
             EndContext();
             BeginContext(159, 98, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e88c1fd7af4244848873f19f10e741a2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "133bff1d8bec40d0b7ab7074bf7aa317", async() => {
                 BeginContext(242, 11, true);
                 WriteLiteral("Create Role");
                 EndContext();
@@ -132,7 +132,7 @@ using LIbraryManagementSytem.Models;
             WriteLiteral("</h5>\r\n            </div>\r\n            <div class=\"card-footer\">\r\n                ");
             EndContext();
             BeginContext(600, 113, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ee1e47dad1a43ffb81a06f10f588fc6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c892cd592bba425cb4c17e0cc76f93aa", async() => {
                 BeginContext(705, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -189,7 +189,7 @@ using LIbraryManagementSytem.Models;
             WriteLiteral("                    ");
             EndContext();
             BeginContext(1116, 60, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "843427e5e87745d7a85f46647a8899ba", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b8297a4062534f92a49c428712e039a3", async() => {
                 BeginContext(1166, 6, true);
                 WriteLiteral("Delete");
                 EndContext();
@@ -239,7 +239,7 @@ else
             ");
             EndContext();
             BeginContext(1532, 98, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e6b7e32bc4894bc6adeef62d9591f795", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d5b7b9fdd4e24f5ca21d4fe9e9a585ca", async() => {
                 BeginContext(1615, 11, true);
                 WriteLiteral("Create Role");
                 EndContext();
